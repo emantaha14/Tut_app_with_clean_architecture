@@ -1,4 +1,6 @@
-import 'package:app_with_clean_architecture/domain/models.dart';
+import 'package:app_with_clean_architecture/app/app_prefs.dart';
+import 'package:app_with_clean_architecture/app/di.dart';
+import 'package:app_with_clean_architecture/domain/model/models.dart';
 import 'package:app_with_clean_architecture/presentation/onboarding/viewmodel/onboarding_viewmodel.dart';
 import 'package:app_with_clean_architecture/presentation/resources/assets_manager.dart';
 import 'package:app_with_clean_architecture/presentation/resources/color_manager.dart';
@@ -8,6 +10,8 @@ import 'package:app_with_clean_architecture/presentation/resources/values_manage
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+
+import '../../resources/routes_manager.dart';
 
 class OnBoardingView extends StatefulWidget {
   const OnBoardingView({super.key});
@@ -19,8 +23,9 @@ class OnBoardingView extends StatefulWidget {
 class _OnBoardingViewState extends State<OnBoardingView> {
   final PageController _pageController = PageController();
   final OnBoardingViewModel _viewModel = OnBoardingViewModel();
-
+  final AppPreferences _appPreferences = instance<AppPreferences>();
   void _bind() {
+    _appPreferences.setOnBoardingScreenViewed();
     _viewModel.start();
   }
 
@@ -69,7 +74,9 @@ class _OnBoardingViewState extends State<OnBoardingView> {
             Align(
               alignment: Alignment.centerRight,
               child: TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushReplacementNamed(context, Routes.loginRoute);
+                },
                 child: Text(AppStrings.skip,
                     textAlign: TextAlign.end,
                     style: Theme.of(context).textTheme.titleMedium),

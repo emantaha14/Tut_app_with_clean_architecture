@@ -57,6 +57,10 @@ ThemeData getApplicationTheme() {
         bodyLarge: getRegularStyle(color: ColorManager.white),
         bodySmall: getRegularStyle(color: ColorManager.grey),
         labelSmall: getRegularStyle(color: ColorManager.white),
+        titleSmall: getRegularStyle(
+            color: ColorManager.white, fontSize: FontSizeManager.s16),
+        displayMedium: getBoldStyle(
+            color: ColorManager.primary, fontSize: FontSizeManager.s12),
       ),
 
       // input theme
@@ -69,13 +73,13 @@ ThemeData getApplicationTheme() {
         errorStyle: getRegularStyle(color: ColorManager.error),
         enabledBorder: OutlineInputBorder(
           borderSide:
-              BorderSide(color: ColorManager.primary, width: AppSize.s1_5),
+              BorderSide(color: ColorManager.grey, width: AppSize.s1_5),
           borderRadius: const BorderRadius.all(
             Radius.circular(AppSize.s8),
           ),
         ),
         focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: ColorManager.grey, width: AppSize.s1_5),
+          borderSide: BorderSide(color: ColorManager.primary, width: AppSize.s1_5),
           borderRadius: const BorderRadius.all(
             Radius.circular(AppSize.s8),
           ),

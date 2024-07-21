@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:app_with_clean_architecture/domain/models.dart';
+import 'package:app_with_clean_architecture/domain/model/models.dart';
 import 'package:app_with_clean_architecture/presentation/base/base_view_model.dart';
 
 import '../../resources/assets_manager.dart';
@@ -10,7 +10,7 @@ class OnBoardingViewModel extends BaseViewModel
     with OnBoardingViewModelInputs, OnBoardingViewModelOutputs {
   late final List<SliderObject> _list;
   int _currentIndex = 0;
-  StreamController _streamController = StreamController<SliderViewObject>();
+  final StreamController _streamController = StreamController<SliderViewObject>();
 
   @override
   void dispose() {
@@ -50,12 +50,10 @@ class OnBoardingViewModel extends BaseViewModel
 
   // onBoarding ViewModel inputs
   @override
-  // TODO: implement inputSliderViewObject
   Sink get inputSliderViewObject => _streamController.sink;
 
   // onBoarding ViewModel outputs
   @override
-  // TODO: implement outputSliderViewModel
   Stream<SliderViewObject> get outputSliderViewModel =>
       _streamController.stream.map((sliderViewObject) => sliderViewObject);
 
